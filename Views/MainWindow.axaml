@@ -17,13 +17,18 @@
 
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Verb:" HorizontalAlignment="Center" />
             <TextBlock Name="TextBlockVerb" Text="TextBlockVerb" HorizontalAlignment="Center" FontSize="17"
                        FontWeight="Bold" />
             <TextBox Name="TextBoxVerb" KeyDown="TextBoxVerb_OnKeyDown"></TextBox>
             <Button Name="ButtonVerb" Content="Enter" HorizontalAlignment="Center" Click="ButtonVerb_OnClick" />
+            
+        </StackPanel>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Name="TextBlockCorrect" Text="TextBlockCorrect" IsVisible="False"></TextBlock>
             <TextBlock Name="TextBlockSolution" Text="TextBlockSolution" IsVisible="False"></TextBlock>
+        </StackPanel>
         </StackPanel>
     </Grid>
 

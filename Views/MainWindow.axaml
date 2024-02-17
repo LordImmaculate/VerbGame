@@ -16,6 +16,10 @@
     </Design.DataContext>
 
     <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TextBlock Name="TextBlockAmountCorrect" Text="Correct: 0" Margin="0,0,10,0"></TextBlock>
+            <TextBlock Name="TextBlockAmountIncorrect" Text="Incorrect: 0"></TextBlock>
+        </StackPanel>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Verb:" HorizontalAlignment="Center" />

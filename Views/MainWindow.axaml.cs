@@ -9,22 +9,26 @@ namespace VerbGame.Views;
 
 public partial class MainWindow : Window
 {
-    int correctVerbs = 0;
-    int incorrectVerbs = 0;
-    private string solution;
+    int _correctVerbs;
+    int _incorrectVerbs;
+    private string _solution;
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     public MainWindow()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     {
         InitializeComponent();
         RandomVerb();
     }
 
+    // ReSharper disable once UnusedParameter.Local
     private void TextBoxVerb_OnKeyDown(object? sender, KeyEventArgs e)
     {
         if (e.Key != Key.Enter) return;
         CheckVerb();
     }
 
+    // ReSharper disable once UnusedParameter.Local
     private void ButtonVerb_OnClick(object? sender, RoutedEventArgs e)
     {
         CheckVerb();
@@ -32,6 +36,7 @@ public partial class MainWindow : Window
 
     private void RandomVerb()
     {
+        // ReSharper disable once UseCollectionExpression
         List<(string, string)> irregularVerbs = new List<(string, string)>
         {
             ("arise", "arose"),
@@ -146,14 +151,14 @@ public partial class MainWindow : Window
         Random rnd = new Random();
         int randomIndex = rnd.Next(0, irregularVerbs.Count);
         string randomKey = irregularVerbs[randomIndex].Item1; // Accessing the first item of the tuple
-        solution = irregularVerbs[randomIndex].Item2;
+        _solution = irregularVerbs[randomIndex].Item2;
 
         TextBlockVerb.Text = randomKey;
     }
 
     private void CheckVerb()
     {
-        if (TextBoxVerb.Text == solution)
+        if (TextBoxVerb.Text == _solution)
         {
             TextBlockCorrect.IsVisible = true;
             TextBlockCorrect.Text = "Correct!";
@@ -161,8 +166,8 @@ public partial class MainWindow : Window
             TextBlockSolution.IsVisible = false;
             TextBoxVerb.Text = null;
             //soundPlayer("correctSound.wav");
-            correctVerbs++;
-            //toolStripLabelCorrect.Text = "Correct: " + correctVerbs;
+            _correctVerbs++;
+            TextBlockAmountCorrect.Text = "Correct: " + _correctVerbs;
             RandomVerb();
         }
         else
@@ -171,10 +176,10 @@ public partial class MainWindow : Window
             TextBlockCorrect.Text = "Incorrect";
             TextBlockCorrect.Foreground = Brushes.Red;
             TextBlockSolution.IsVisible = true;
-            TextBlockSolution.Text = "The correct answer is: " + solution;
+            TextBlockSolution.Text = "The correct answer is: " + _solution;
             TextBoxVerb.Text = null;
-            incorrectVerbs++;
-            //toolStripLabelIncorrect.Text = "Incorrect: " + incorrectVerbs;
+            _incorrectVerbs++;
+            TextBlockAmountIncorrect.Text = "Incorrect: " + _incorrectVerbs;
         }
     }
 }
